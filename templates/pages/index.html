@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penguin</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background: url('https://example.com/educational-background.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .top-bar {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+        }
+        .nav-bar {
+            background-color: #444;
+            padding: 10px 0;
+        }
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <a href="/" class="text-white"><h1>Penguin</h1></a>
+                </div>
+                <div class="col-6 text-right">
+                    <a href="https://facebook.com" target="_blank" class="text-white mx-2"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nav Bar -->
+    <nav class="nav-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <!-- Left side of nav bar (if needed) -->
+                </div>
+                <div class="col-6 text-right">
+                    <a href="{% url 'register' %}" class="btn btn-primary mx-1">Register</a>
+                    <a href="{% url 'login' %}" class="btn btn-success mx-1">Login</a>
+                    <a href="{% url 'dashboard' %}" class="btn btn-success mx-1">dashboard</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Latest Courses</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            {% for course in courses %}
+                                <li class="list-group-item">
+                                    <a href="{% url 'course_detail' course.id %}">
+                                        <strong>Course ID:</strong> {{ course.id }}<br>
+                                        <strong>Description:</strong> {{ course.description }}<br>
+                                        <strong>Start Date:</strong> {{ course.start_date }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <p>&copy; 2023 Penguin. All rights reserved.</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- FontAwesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>
