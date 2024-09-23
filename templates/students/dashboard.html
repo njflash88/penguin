@@ -1,3 +1,8 @@
-<div class="bg-succss">
-<h1> DASHBOARD </h1>
-</div>
+{% extends 'base.html' %} 
+{% load static %}
+{% load humanize %}
+<!--add title to the tab-->
+{% block title %} | Dashboard {% endblock %}
+{% block content %}
+<p> Dashboard</p>
+{% endblock %}

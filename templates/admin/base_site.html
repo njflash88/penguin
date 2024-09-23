@@ -1,0 +1,12 @@
+{% extends 'admin/base.html' %}
+  comment
+{% load static %}
+  load static block
+{% block branding %}
+<h> LOGO</h>
+{% endblock %}
+<!-- add css style -->  
+{% block extrastyle %} 
+<!-- add css link -->
+<link rel="stylesheet" href={% static 'css/admin.css' %}/>
+{% endblock %}

@@ -1,3 +1,158 @@
-<div class="bg-succss">
-    <h1> REGISTER </h1>
-</div>
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+<!--add title to the tab-->
+{% block title %} | Register {% endblock %}
+{% block content %}
+<section id="register" class="bg-light py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="card">
+              <div class="card-header bg-primary text-white">
+                <h4><i class="fas fa-user-plus"></i> Register</h4>
+              </div>
+              <div class="card-body">
+                <!-- alerts if there is any -->
+                {% include "partials/_alert.html" %}
+                <form action="{% url 'register' %}" method="POST">
+                {% csrf_token %}
+                  <div class="form-group">
+                    <label for="first_name">First Name</label>
+                    <input
+                      type="text"
+                      name="first_name"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="last_name">Last Name</label>
+                    <input
+                      type="text"
+                      name="last_name"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="username">Username</label>
+                    <input
+                      type="text"
+                      name="username"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input
+                      type="email"
+                      name="email"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="street">Street</label>
+                    <input
+                      type="text"
+                      name="street"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="city">City</label>
+                    <input
+                      type="text"
+                      name="city"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="district">District</label>
+                    <input
+                      type="text"
+                      name="district"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="country">Country</label>
+                    <input
+                      type="text"
+                      name="country"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="postal">Postal</label>
+                    <input
+                      type="text"
+                      name="postal"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="start_date">Start Date</label>
+                    <input
+                      type="date"
+                      name="start_date"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="ename">Emergency Contact</label>
+                    <input
+                      type="text"
+                      name="ename"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="ephone">Emergency Contact Phone</label>
+                    <input
+                      type="text"
+                      name="ephone"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="password2">Password</label>
+                    <input
+                      type="password"
+                      name="password"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Confirm Password</label>
+                    <input
+                      type="password"
+                      name="password2"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <input
+                    type="submit"
+                    value="Register"
+                    class="btn btn-secondary btn-block"
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}
