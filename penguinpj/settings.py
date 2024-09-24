@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'instructors.apps.InstructorsConfig',
     'enrollments.apps.EnrollmentsConfig',
     'authuser',
+    'import_export',
 ]
 
 AUTH_USER_MODEL='authuser.User'
@@ -154,3 +155,11 @@ EMAIL_POST = 587
 EMAIL_HOST_USER = 'gordonchu88@yahoo.com'
 EMAIL_HOST_PASSWORD = 'password'
 EMAIL_USE_TLS = True
+
+# settings.py
+from import_export.formats.base_formats import CSV, XLSX
+# multiple import options
+IMPORT_FORMATS = [CSV, XLSX]
+
+# single export options
+EXPORT_FORMATS = [XLSX]
