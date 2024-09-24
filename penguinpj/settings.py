@@ -47,7 +47,10 @@ INSTALLED_APPS = [
     'forums.apps.ForumsConfig',
     'instructors.apps.InstructorsConfig',
     'enrollments.apps.EnrollmentsConfig',
+    'authuser',
 ]
+
+AUTH_USER_MODEL='authuser.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

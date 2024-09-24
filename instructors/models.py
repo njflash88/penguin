@@ -3,9 +3,8 @@ from students.models import district_choices, countries_choices
 
 # Create your models here.
 class Instructor(models.Model):
-    #id = models.CharField(max_length=10)
-    lastname = models.CharField(max_length=30)
-    firstname = models.CharField(max_length=30)
+    lastname = models.CharField(max_length=255)
+    firstname = models.CharField(max_length=255)
     phone = models.CharField(max_length=20)
     email = models.CharField(max_length=30)
     street = models.CharField(max_length=50)
