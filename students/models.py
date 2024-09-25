@@ -12,19 +12,19 @@ User = get_user_model()
 
 # Create your models here. 
 class Student(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    lastname = models.CharField(max_length=255)
-    firstname = models.CharField(max_length=255)
-    phone = models.CharField(max_length=20)
-    email = models.CharField(max_length=50)
-    street = models.CharField(max_length=50)
-    city = models.CharField(max_length=20)
-    district = models.CharField(max_length=50,choices=district_choices.items())
-    country = models.CharField(max_length=50,choices=countries_choices.items())
-    postal = models.CharField(max_length=20)
+    username = models.OneToOneField(User, on_delete=models.CASCADE, to_field='username', default='')
+    last_name = models.CharField(max_length=100, default='')
+    first_name = models.CharField(max_length=100, default='')
+    phone = models.CharField(max_length=20, default='')
+    email = models.CharField(max_length=50, default='')
+    street = models.CharField(max_length=50, default='')
+    city = models.CharField(max_length=20, default='')
+    district = models.CharField(default='',max_length=50,choices=district_choices.items())
+    country = models.CharField(default='',max_length=50,choices=countries_choices.items())
+    postal = models.CharField(max_length=20, default='')
     start_date = models.DateField(default=timezone.now)
-    em_contact_name = models.CharField(max_length=30)
-    em_contact_tel = models.name = models.CharField(max_length=30)
+    em_contact_name = models.CharField(max_length=30, default='')
+    em_contact_tel = models.name = models.CharField(max_length=30, default='')
 
 def __str__(self):
     return self.user.user_name

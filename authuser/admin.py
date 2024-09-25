@@ -17,16 +17,16 @@ class UserResource(resources.ModelResource):
         model = User
 
 class UserAdmin(BaseUserAdmin, ImportExportModelAdmin):
-    list_display = ('id', 'username', 'email', 'name')  # 使用 User 模型中实际存在的字段
-    list_display_links = ('id', 'username', 'email', 'name')  # 使用 User 模型中实际存在的字段
-    list_filter = ('username', 'email', 'name')  # 使用 User 模型中实际存在的字段
-    search_fields = ('username', 'email', 'name')  # 使用 User 模型中实际存在的字段
+    list_display = ('id', 'username', 'email', 'last_name', 'first_name')  # 使用 User 模型中实际存在的字段
+    list_display_links = ('id', 'username', 'email', 'last_name', 'first_name')  # 使用 User 模型中实际存在的字段
+    list_filter = ('username', 'email', 'last_name', 'first_name')  # 使用 User 模型中实际存在的字段
+    search_fields = ('username', 'email', 'last_name', 'first_name')  # 使用 User 模型中实际存在的字段
     list_per_page = 25
     resource_classes = [UserResource]
 
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
-        ('Personal info', {'fields': ('email', 'name')}),
+        ('Personal info', {'fields': ('email', 'last_name', 'first_name')}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
     )
