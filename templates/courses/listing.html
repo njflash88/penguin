@@ -1,0 +1,28 @@
+{% extends 'base.html' %} 
+{% load humanize %}
+<!--add title to the tab-->
+{% block title %} | Course Details {% endblock %}
+{% block content %}
+<div class="card-body">
+    <ul class="list-group bg-info">Course selected       
+       
+            <div class="col-md-12">
+                <p>Course Title: {{ course.title }}</p>
+                <div class="p">Course category: {{ course.catagory }}</div>
+                <div class="p">Course keyword: {{ course.keyword }}</div>
+                <div class="p">Course price: ${{ course.price|intcomma }}</div>
+                <div class="p">Course prerequisite: {{ course.prerequisite }}</div>
+                <div class="p">Course registration deadline: {{ course.deadline }}</div>
+                <div class="p">Course start date: {{ course.start_date }}</div>
+                <div class="p">Course end date: {{ course.end_date }}</div>
+                <div class="p">Course location: {{ course.location }}</div>
+                <div class="p">Course capacity: {{ course.max_enrollment }}</div>
+                
+
+            </div>
+       
+    </ul>
+</div>
+
+
+{% endblock %}
