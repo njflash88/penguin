@@ -3,7 +3,38 @@
 <!--add title to the tab-->
 {% block title %} | Course List {% endblock %}
 {% block content %}
-
+<section id="root">
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-info">
+                        <h4>Latest Courses</h4>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group bg-info">Course Title        Cat.       Start Date
+                            {% if courses %}
+                            {% for course in courses %}
+                                <li class="list-group-item">
+                                    <a href="{% url 'course' course.id %}">
+                                         {{ course.title }}
+                                         {{ course.catagory }}
+                                         {{ course.start_date }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                            {% else %}
+                                <div class="col-md-12">
+                                    <p>No Listing Available</p>
+                                </div>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
 
 
 {% endblock %}

@@ -3,6 +3,9 @@ from django.shortcuts import render, redirect
 # from django.contrib.auth.models import User
 from django.contrib import messages, auth
 from .models import Student
+from enrollments.models import Enrollment
+from courses.models import Course
+from forums.models import Forum
 from authuser.models import User
 
 # Create your views here.
@@ -43,6 +46,7 @@ def register(request):
                         first_name=first_name,
                         last_name=last_name,
                         email=email,
+                        is_staff=True,
                         )
                     #user.save()
                     print("** after User.object.create_user()")
@@ -80,7 +84,7 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             messages.success(request, 'You are now logged in')
-            return redirect('dashboard')
+            return redirect('students:dashboard')
         else:
             messages.error(request, 'Invalid credentials')
             return redirect('login')
@@ -94,4 +98,23 @@ def logout(request):
     return redirect("index")
 
 def dashboard(request):
-    return render(request, 'students/dashboard.html')
+    enrolled_listing = Enrollment.objects.order_by('-enrollment_date')
+
+    #the following 3 filters assuming incoming html has set search criteria
+    if 'created_by' in request.GET:
+        created_by = request.GET['created_by']
+        if created_by:
+            enrolled_listing = enrolled_listing.filter(created_by__iexact=created_by)
+    if 'keyword' in request.GET:
+        keyword = request.GET['keyword']
+        if keyword:
+            enrolled_listing = enrolled_listing.filter(keyword__icontains=keyword)
+    if 'discussion_title' in request.GET:
+        discussion_title = request.GET['discussion_title']
+        if keyword:
+            enrolled_listing = enrolled_listing.filter(discussion_title__icontains=discussion_title)
+
+    course_listing = Course.objects.order_by('id')
+    forum_listing = Forum.objects
+    context = { 'enrolled':enrolled_listing, 'courses':course_listing, 'forum':forum_listing}
+    return render(request, 'students/dashboard.html', context)

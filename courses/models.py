@@ -16,8 +16,9 @@ class Course(models.Model):
     deadline = models.DateField()
     start_date = models.DateField()
     end_date = models.DateField()
-    max_enrollment = models.BigIntegerField()
-    location = models.CharField(max_length=15)
+    current_enrollment = models.BigIntegerField(default=0)
+    max_enrollment = models.BigIntegerField(default=0)
+    location = models.CharField(max_length=15, blank=True)
 
 
     def __str__(self):

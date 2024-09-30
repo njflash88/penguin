@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% load humanize %} {% load static %}
+<!-- tab title -->
+{% block title %} | {{listing.title}} {% endblock %}
+{% block content %}
+<div>
+<p>Course ID: {{listing.course}} </p>
+<p>Enrollment Date: {{listing.enrollment_date}} </p>
+<p>Finished: {{listing.finished}} </p>
+<p>Passed: {{listing.passed}} </p>
+<p>Withdrawn: {{listing.Withdrawn}} </p>
+</div>
+{% endblock %}

@@ -20,8 +20,7 @@ def subscribe(request):
         else:
             messages.error(request,'Subscribe failed!')
 
-        return redirect(reverse('pages:index'))
-    else:
-        return render(request, 'pages/index.html')
+    return redirect(reverse('pages:index'))
+    
     
 
