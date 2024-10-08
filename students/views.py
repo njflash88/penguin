@@ -67,10 +67,11 @@ def register(request):
                     )
                     student.save()
                     messages.success(request,'You are now registered and can log in')
-                    return redirect('login')
+                    return redirect('students:login')
         else:
             messages.error(request, 'Passwords do not match')
-            return redirect('register')
+            return render(request, 'students/register.html')
+            #return redirect('register')
     elif request.method == 'GET':
         print("*** in Students register GET")
         return render(request, 'students/register.html')
@@ -87,7 +88,7 @@ def login(request):
             return redirect('students:dashboard')
         else:
             messages.error(request, 'Invalid credentials')
-            return redirect('login')
+            return redirect('students:login')
     else:
         return render(request,'students/login.html')
 
@@ -95,11 +96,11 @@ def logout(request):
     if request.method == 'POST':
         auth.logout(request)
         messages.success(request, 'You are now logged out')
-    return redirect("index")
+    return redirect("/")
 
 def dashboard(request):
     enrolled_listing = Enrollment.objects.order_by('-enrollment_date')
-
+    print("*** in students.dashboard")
     #the following 3 filters assuming incoming html has set search criteria
     if 'created_by' in request.GET:
         created_by = request.GET['created_by']

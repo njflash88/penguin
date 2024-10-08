@@ -1,9 +1,26 @@
 {% extends 'base.html' %} 
+{% load static %}
 {% load humanize %}
 <!--add title to the tab-->
 {% block title %} | Welcome {% endblock %}
 {% block content %}
 
+<!--card with image overlay---->
+<div class="card">
+    <img 
+    src="https://picsum.photos/200/300"
+    class="card-image-overlay"
+    style="height: 200px"
+    />
+   <class class="card-img-overlay">
+       <h4 class="card-title text-muted">Open Source</h4>
+       <p class="card-text text-warning">
+           Open the World, go Open Source?
+       </p>
+       <a href="#" class="btn btn-outline-primary">Read more</a>
+    </class>
+</div>
+{% include 'partials/_alert.html' %}
     <!-- Main Content -->
     <section id="root">
     <div class="container mt-4">
@@ -13,11 +30,16 @@
                     <div class="card-header bg-info">
                         <h4>Latest Courses</h4>
                     </div>
-                    <div class="card-body">
-                        <ul class="list-group bg-info">Course Title        Cat.       Start Date
+                    
+                    <div class="card-body bg-secondary" >
+                        <h5 class="d-inline bg-secondary">Course</h5>
+                        <h5 class="d-inline bg-secondary">Category</h5>
+                        <h5 class="d-inline bg-secondary">Start Date</h5>
+
+                        <ul class="list-group bg-info">
                             {% if courses %}
                             {% for course in courses %}
-                                <li class="list-group-item">
+                                <li class="list-group-item bg-light">
                                     <a href="{% url 'course' course.id %}">
                                          {{ course.title }}
                                          {{ course.catagory }}

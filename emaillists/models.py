@@ -7,5 +7,5 @@ class Emaillist(models.Model):
     subscribe_date = models.DateTimeField(auto_now_add=True)
     purge = models.BooleanField(default=False)
 
-def __str__(self):
+    def __str__(self):
         return self.email

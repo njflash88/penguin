@@ -4,7 +4,7 @@
 {% block title %} | Course Details {% endblock %}
 {% block content %}
 <div class="card-body">
-    <ul class="list-group bg-info">Course selected       
+    <ul class="list-group bg-secondary">Course selected       
        
             <div class="col-md-12">
                 <p>Course Title: {{ course.title }}</p>
@@ -17,8 +17,9 @@
                 <div class="p">Course end date: {{ course.end_date }}</div>
                 <div class="p">Course location: {{ course.location }}</div>
                 <div class="p">Course capacity: {{ course.max_enrollment }}</div>
+                {% if user.is_authenticated %}
                 <div class="button">
-                    <form action="{% url 'enroll' course.id %}" method="POST">
+                    <form action="{% url 'enrollments:enroll' course.id %}" method="POST">
                         {% csrf_token %}
                         <input
                             type="submit"
@@ -26,8 +27,9 @@
                             class="btn btn-secondary btn-block"
                         />
                     </form>
+                </div>
+                {% endif %}
             </div>
-       
     </ul>
 </div>
 

@@ -13,9 +13,10 @@ class Instructor(models.Model):
     country = models.CharField(max_length=50,choices=countries_choices.items())
     postal = models.CharField(max_length=20)
     start_date = models.DateField()
-    background = models.CharField(max_length=200)
+    background = models.CharField(max_length=200, default='', blank=True)
     em_contact = models.CharField(max_length=30)
     em_tel = models.name = models.CharField(max_length=30)
 
+ 
     def __str__(self):
         return (self.firstname+" "+self.lastname)

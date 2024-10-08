@@ -46,6 +46,52 @@
             bottom: 0;
             width: 100%;
         }
+        .navbar {
+    height: 80px;
+    background-color: #333;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.fixed-top {
+    height: 50px; /* Adjust height as needed */
+    background-color: #555;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 80px; /* Position it right below the navbar */
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Ensure it appears above other content */
+}
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        height: 60px;
+    }
+
+    .navbar a {
+        font-size: 16px;
+    }
+}
+textarea {
+            resize: none; /* Disable resizing */
+            overflow: hidden; /* Hide scrollbars */
+            width: 100%; /* Full width */
+            max-width: 600px; /* Maximum width */
+            padding: 10px; /* Padding for better appearance */
+            border: 1px solid #ccc; /* Border style */
+            border-radius: 4px; /* Rounded corners */
+            font-size: 16px; /* Font size */
+            background-color: #333
+        }
     </style>
 </head>
 <body>
@@ -58,5 +104,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- FontAwesome for icons -->
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src={% static "js/jquery-3.3.1.min.js" %}></script>
+    <script src={% static "js/bootstrap.bundle.min.js" %}></script>
+    <script src={% static "js/main.js" %}></script>
+    <script src={% static "js/lightbox.min.js" %}></script>
 </body>
 </html>

@@ -1,0 +1,117 @@
+{% extends 'base.html' %} 
+{% load humanize %}
+
+<!--add title to the tab-->
+{% block title %} | Forum {% endblock %}
+{% block content %}
+
+{% include 'partials/_alert.html' %}
+<form action="{% url 'forums:index' %}" method="post">
+  {% csrf_token %}
+  <div>
+      <label for="postmsg">Post Content:</label><br>
+<textarea id="postmsg" name="postmsg" placeholder="{{user.username}}, what is Happening ..."></textarea>
+
+    <script>
+        // JavaScript to make the textarea expand as you type
+        const textarea = document.getElementById('postmsg');
+
+        textarea.addEventListener('input', function() {
+            // Reset the height to auto to shrink back to the default size if needed
+            this.style.height = 'auto';
+
+            // Set the height to the scroll height to expand to fit the content
+            this.style.height = this.scrollHeight + 'px';
+        });
+    </script>
+</div>
+<div>
+    <button type="submit">Post</button><i class="fa fa-file-image-o"></i>
+</div>
+</form>
+    <hr>
+
+<!-- Forum -->
+    <section id="Forums">
+      <div class="w3-rest w3-container text-left text-dark bg-white">
+        {% if forums %}
+        {% for forum in forums %}
+            <div>
+              <a> {{forum.created_by}}</a>
+              <i class="fas fa-clock">{{forum.created_at|timesince}} ago</i>
+            </div>
+            <li class="list-group-item">
+            <a href="{% url 'forums:forums' forum.id %}">
+              {{ forum.message }}
+            </a>
+            </li>
+            {% if forum.photo_main %}
+            <div class="w3-row">
+              <div class="w3-col s4"><img src={{forum.photo_main.url}}></div>
+            </div>
+            {% endif %}
+            {% if forum.photo_1 %}
+            <div class="w3-row">
+              <div class="w3-col s4"><img src={{forum.photo_1.url}}></div>
+            </div>
+            {% endif %}
+            {% if forum.photo_2 %}
+            <div class="w3-row">
+              <div class="w3-col s4"><img src={{forum.photo_2.url}}></div>
+            </div>
+            {% endif %}
+            <div>
+              <i class="fas fa-comment fa-sm mr-1"></i>
+              <a># of posts: {{forum.post_count}}</a>
+            </div>
+            <hr>
+        {% endfor %}
+        {% else %}
+            <a>no Forum found</a>
+        {% endif %}
+        <hr class="text-white bg-dark">
+      </div>
+    </section>
+<!--
+    <section id="services" class="py-5 bg-secondary text-white">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-4">
+            <i class="fas fa-comment fa-4x mr-4"></i>
+            <hr />
+            <h3>Consulting Services</h3>
+            <p>
+              Our management consulting services focus on our clients'
+               most critical issues and opportunities: strategy, 
+               marketing, organization, operations, technology, 
+               transformation, digital, advanced analytics, corporate
+                finance, and sustainability
+                 across all industries and geographies. 
+            </p>
+          </div>
+          <div class="col-md-4">
+            <i class="fas fa-home fa-4x mr-4"></i>
+            <hr />
+            <h3>Academy</h3>
+            <p>
+              Unlimited access to 27,000+ fresh courses across tech, business, leadership, and wellness
+Robust platform features offering on-demand, immersive, and cohort-based learning for your team
+Personalized learning and actionable learner insights to drive high usage and course completion rates
+            </p>
+          </div>
+          <div class="col-md-4">
+            <i class="fas fa-suitcase fa-4x mr-4"></i>
+            <hr />
+            <h3>Infrastructure</h3>
+            <p>
+              You’re probably already aware of the potential of cloud 
+              computing to transform your organization. As you explore
+               moving away from self-managed on-premises IT solutions,
+                it’s important to understand the different options available to you when it comes to cloud computing services.  
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  -->
+{% endblock %}

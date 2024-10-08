@@ -23,8 +23,8 @@ class Student(models.Model):
     country = models.CharField(default='',max_length=50,choices=countries_choices.items())
     postal = models.CharField(max_length=20, default='')
     start_date = models.DateField(default=timezone.now)
-    em_contact_name = models.CharField(max_length=30, default='')
-    em_contact_tel = models.name = models.CharField(max_length=30, default='')
+    em_contact_name = models.CharField(max_length=30, default='', blank=True)
+    em_contact_tel = models.name = models.CharField(max_length=30, default='', blank=True)
 
-def __str__(self):
-    return self.user.user_name
+    def __str__(self):
+        return self.user.user_name

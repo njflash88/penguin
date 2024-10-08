@@ -1,0 +1,139 @@
+{% extends 'base.html' %} 
+{% load humanize %}
+
+<!--add title to the tab-->
+{% block title %} | Forum Details {% endblock %}
+{% block content %}
+
+{% include 'partials/_alert.html' %}
+<!-- Forum -->
+    <section id="Detail">
+      <div class="w3-row">
+      <div class="w3-rest w3-container text-left text-dark bg-white">
+        {% if forum %}
+          <div>
+            <a class="fas text-dark"> {{forum.created_by}}</a>
+            <i class="fas fa-clock">{{forum.created_at|timesince}} ago</i>
+          </div>
+            <li class="list-group-item bg-dark text-white">
+            <a>
+              {{ forum.message }}
+            </a>
+            </li>
+            {% if forum.photo_main %}
+            <div class="w3-row">
+              <div class="w3-col s4"><img src={{forum.photo_main.url}}></div>
+            </div>
+            {% endif %}
+            {% if forum.photo_1 %}
+            <div class="w3-row">
+              <div class="w3-col s4"><img src={{forum.photo_1.url}}></div>
+            </div>
+            {% endif %}
+            {% if forum.photo_2 %}
+            <div class="w3-row">
+              <div class="w3-col s4"><img src={{forum.photo_2.url}}></div>
+            </div>
+            {% endif %}
+            
+            <div>
+              <i class="fas fa-comment fa-sm mr-1"></i>
+              <a># of posts: {{forum.post_count}}</a>
+            </div>
+            
+        {% else %}
+            <a>no Forum found</a>
+        {% endif %}
+        <hr>
+      </div>
+      </div>
+    </section>
+
+<!-- post box -->
+    <form action="{% url 'forums:post' %}" method="post">
+      {% csrf_token %}
+      <div>
+      <textarea id="expandingTextarea" name="postmsg" placeholder="{{user.username}}, Post your reply"></textarea>
+    
+        <script>
+            // JavaScript to make the textarea expand as you type
+            const textarea = document.getElementById('expandingTextarea');
+    
+            textarea.addEventListener('input', function() {
+                // Reset the height to auto to shrink back to the default size if needed
+                this.style.height = 'auto';
+    
+                // Set the height to the scroll height to expand to fit the content
+                this.style.height = this.scrollHeight + 'px';
+            });
+        </script>
+      </div>
+    <div>
+        <button type="submit">Post</button>
+    </div>
+    </form>
+    <hr>
+
+<!-- other Posts -->
+<section id="Post">
+  <div class="w3-row">
+  <div class="w3-rest w3-container text-left text-dark bg-white">
+    {% if post %}
+              {% for p in post %}
+              <br>
+              <div>
+                <a> {{p.posted_by}}</a>
+                <i class="fas fa-clock">{{p.created_at|timesince}} ago</i>
+              </div>
+              {{p.content}}
+              {% endfor %}
+            {% else %}
+              <a> no new post</a>
+            {% endif %}
+    <hr>
+  </div>
+  </div>
+</section>
+<!--
+    <section id="services" class="py-5 bg-secondary text-white">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-4">
+            <i class="fas fa-comment fa-4x mr-4"></i>
+            <hr />
+            <h3>Consulting Services</h3>
+            <p>
+              Our management consulting services focus on our clients'
+               most critical issues and opportunities: strategy, 
+               marketing, organization, operations, technology, 
+               transformation, digital, advanced analytics, corporate
+                finance, and sustainability
+                 across all industries and geographies. 
+            </p>
+          </div>
+          <div class="col-md-4">
+            <i class="fas fa-home fa-4x mr-4"></i>
+            <hr />
+            <h3>Academy</h3>
+            <p>
+              Unlimited access to 27,000+ fresh courses across tech, business, leadership, and wellness
+Robust platform features offering on-demand, immersive, and cohort-based learning for your team
+Personalized learning and actionable learner insights to drive high usage and course completion rates
+            </p>
+          </div>
+          <div class="col-md-4">
+            <i class="fas fa-suitcase fa-4x mr-4"></i>
+            <hr />
+            <h3>Infrastructure</h3>
+            <p>
+              You’re probably already aware of the potential of cloud 
+              computing to transform your organization. As you explore
+               moving away from self-managed on-premises IT solutions,
+                it’s important to understand the different options available to you when it comes to cloud computing services.  
+            </p>
+          </div>
+        </div>
+      </div>
+    </section> 
+  -->
+{% endblock %}

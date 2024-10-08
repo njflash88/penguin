@@ -4,7 +4,10 @@
 <!--add title to the tab-->
 {% block title %} | Dashboard {% endblock %}
 {% block content %}
-<p> Dashboard</p>
+{% include 'partials/_alert.html' %}
+<br>
+<a class="button btn btn-light btn-block mx-auto bg-secondary col-12 pb-1 pt-1" style="width: 400px" href="{% url 'forums:index' %}">Discussion Forums</a>
+
     <!-- Enrolled Content -->
     <section id="root">
         <div class="container mt-4">
@@ -15,7 +18,14 @@
                             <h4>Enrolled Courses</h4>
                         </div>
                         <div class="card-body">
-                            <ul class="list-group bg-info">COURSE        Cat.       Start Date finished passed withdrawn
+                            <h5 class="d-inline bg-secondary">Course</h5>
+                            <h5 class="d-inline bg-secondary">Category</h5>
+                            <h5 class="d-inline bg-secondary">Start Date</h5>
+                            <h5 class="d-inline bg-secondary">Finished</h5>
+                            <h5 class="d-inline bg-secondary">Passed</h5>
+                            <h5 class="d-inline bg-secondary">Withdrawn</h5>
+
+                            <ul class="list-group bg-info">
                                 {% if enrolled %}
                                 {% for en in enrolled %}
                                     <li class="list-group-item">
@@ -40,7 +50,7 @@
                 </div>
             </div>
         </div>
-        </section>
+    </section>
 
 
     <!-- Course Content -->
@@ -53,7 +63,10 @@
                             <h4>Latest Courses</h4>
                         </div>
                         <div class="card-body">
-                            <ul class="list-group bg-info">Course Title        Cat.       Start Date
+                            <h5 class="d-inline bg-secondary">Course</h5>
+                            <h5 class="d-inline bg-secondary">Category</h5>
+                            <h5 class="d-inline bg-secondary">Start Date</h5>
+                            <ul class="list-group bg-info">
                                 {% if courses %}
                                 {% for course in courses %}
                                     <li class="list-group-item">
@@ -75,5 +88,5 @@
                 </div>
             </div>
         </div>
-        </section>
+    </section>
 {% endblock %}

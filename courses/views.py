@@ -22,19 +22,3 @@ def listing(request, course_id):
     course = get_object_or_404(Course, pk=course_id)
     return render(request, 'courses/listing.html', {'course':course})
 
-def enroll(request, course_id):
-    #create enrollment record
-    print("*** IN COURSE.ENROLL")
-    course = get_object_or_404(Course, pk=course_id)
-    print("*** User.username=" , User.username)
-    if request.method == 'POST':
-        enrollment=Enrollment.objects.create(
-        student = User.username,
-        course=course.title,
-        )
-    if enrollment:
-            messages.success(request,'You are now enrolled to:', course_id )
-    else:
-        messages.error(request,'Enrollment failed!')
-#    return render(request, 'courses/enroll.html')
-    return redirect(reverse('students:dashboard'))

@@ -13,7 +13,7 @@ class Course(models.Model):
     keyword = models.CharField(max_length=50)
     price = models.IntegerField()
     prerequisite = models.CharField(max_length=10)
-    deadline = models.DateField()
+    deadline = models.DateField(default='', blank=True)
     start_date = models.DateField()
     end_date = models.DateField()
     current_enrollment = models.BigIntegerField(default=0)

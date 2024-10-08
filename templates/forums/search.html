@@ -1,0 +1,86 @@
+{% extends 'base.html' %} 
+{% load humanize %}
+<!--add title to the tab-->
+{% block title %} | Forum {% endblock %}
+{% block content %}
+
+{% include 'partials/_alert.html' %}
+
+<!-- Forum -->
+    <section id="Forums">
+      <form action="{% url 'forums:add' %}" method="POST">
+        <label for="content">What is happening?</label><br>
+        <textarea id="newpost" name="newpost" rows="1" maxlength="300"></textarea>
+      </form>
+      <div class="w3-row">
+      <div class="w3-rest w3-container text-left" style="height:300px;">
+        {% if forums %}
+        {% for forum in forums %}
+            <div class="inline-block"><p>{{ forum.create_by }}</p></div>
+            <div class="inline-block fas fa-clock"><p>{{forum.created_at|timesince}}</p></div>
+            <li class="list-group-item">
+            <a href="{% url 'forums' forums.id %}">
+              {{ forum.message }}
+            </a>
+            </li>
+            {% if forum.photo_main %}
+            <div class="w3-row">
+              <div class="w3-col s4"><img src={{forum.photo_main.url}}></div>
+            </div>
+            {% endif %}
+            {% if forum.photo_1 %}
+            <div class="w3-row">
+              <div class="w3-col s4"><img src={{forum.photo_1.url}}></div>
+            </div>
+            {% endif %}
+            {% if forum.photo_2 %}
+            <div class="w3-row">
+              <div class="w3-col s4"><img src={{forum.photo_2.url}}></div>
+            </div>
+            {% endif %}
+            <hr>
+            <div>
+              <a># posts: {{forum.post_count}}</a>
+            </div>
+        {% endfor %}
+        {% else %}
+            <p>no Forum found</p>
+        {% endif %}
+        <hr>
+      </div>
+      </div>
+    </section>
+
+    <section id="services" class="py-5 bg-secondary text-white">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-4">
+            <i class="fas fa-comment fa-4x mr-4"></i>
+            <hr />
+            <h3>Consulting Services</h3>
+            <p>
+              dignissimos ratione ea quae.
+            </p>
+          </div>
+          <div class="col-md-4">
+            <i class="fas fa-home fa-4x mr-4"></i>
+            <hr />
+            <h3>Propery Management</h3>
+            <p>
+              dignissimos ratione ea quae.
+            </p>
+          </div>
+          <div class="col-md-4">
+            <i class="fas fa-suitcase fa-4x mr-4"></i>
+            <hr />
+            <h3>Renting & Selling</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt,
+              debitis nam! Repudiandae, provident iste consequatur hic
+              dignissimos ratione ea quae.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}

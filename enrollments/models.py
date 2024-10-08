@@ -16,5 +16,6 @@ class Enrollment(models.Model):
     passed = models.BooleanField(default=False, blank=True)
     withdrawn = models.DateField(blank=True, null=True)
 
-def __str__(self):
+ 
+    def __str__(self):
         return self.title

@@ -5,5 +5,4 @@ from courses.models import Course
 urlpatterns = [
     path('', views.index, name='courses'),
     path('<int:course_id>', views.listing, name='course'),
-    path('enroll/<int:course_id>/', views.enroll, name='enroll'),
 ]
