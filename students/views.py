@@ -99,7 +99,7 @@ def logout(request):
     return redirect("/")
 
 def dashboard(request):
-    enrolled_listing = Enrollment.objects.order_by('-enrollment_date')
+    enrolled_listing = Enrollment.objects.filter(student=request.user.username).order_by('-enrollment_date')
     print("*** in students.dashboard")
     #the following 3 filters assuming incoming html has set search criteria
     if 'created_by' in request.GET:

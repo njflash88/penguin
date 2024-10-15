@@ -6,13 +6,18 @@
 {% block content %}
 
 {% include 'partials/_alert.html' %}
+<!-- back to POST key -->
+<i class="fa fa-arrow-left text-white"></i>
+
+<a class="button text-white" type="submit" href="{% url 'forums:index' %}">POST</a>
 <!-- Forum -->
     <section id="Detail">
       <div class="w3-row">
       <div class="w3-rest w3-container text-left text-dark bg-white">
         {% if forum %}
           <div>
-            <a class="fas text-dark"> {{forum.created_by}}</a>
+            <a class="h5 bg-white text-blue">Forum </a> 
+            <a class="fas text-dark">@{{forum.created_by}}</a>
             <i class="fas fa-clock">{{forum.created_at|timesince}} ago</i>
           </div>
             <li class="list-group-item bg-dark text-white">
@@ -79,8 +84,8 @@
   <div class="w3-row">
   <div class="w3-rest w3-container text-left text-dark bg-white">
     {% if post %}
+              <a class="h5">Reply </a>
               {% for p in post %}
-              <br>
               <div>
                 <a> {{p.posted_by}}</a>
                 <i class="fas fa-clock">{{p.created_at|timesince}} ago</i>

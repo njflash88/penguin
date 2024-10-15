@@ -43,7 +43,7 @@ def forums(request, forum_id):
     print("***in forums: id=", forum_id)
     forum = get_object_or_404(Forum, pk=forum_id)
     share_forum_id = forum_id
-    post = Post.objects.order_by('-created_at').filter(forum_id=forum_id, posted_by_id=user_id)
+    post = Post.objects.order_by('-created_at').filter(forum_id=forum_id)
 
     if post:
         context = {'forum':forum, 'post':post}

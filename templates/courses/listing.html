@@ -17,17 +17,22 @@
                 <div class="p">Course end date: {{ course.end_date }}</div>
                 <div class="p">Course location: {{ course.location }}</div>
                 <div class="p">Course capacity: {{ course.max_enrollment }}</div>
+                <hr>
+                <a class="button text-white btn-secondary" href="{% url 'students:dashboard' %}"><i class="fa fa-arrow-left" aria-hidden="true"> </i>BACK</a>
+                <hr>
                 {% if user.is_authenticated %}
+                {% if not enrolled %}
                 <div class="button">
                     <form action="{% url 'enrollments:enroll' course.id %}" method="POST">
                         {% csrf_token %}
                         <input
                             type="submit"
                             value="ENROLL"
-                            class="btn btn-secondary btn-block"
+                            class="btn btn-primary"
                         />
                     </form>
                 </div>
+                {% endif %}
                 {% endif %}
             </div>
     </ul>

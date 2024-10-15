@@ -12,3 +12,6 @@ def index(request):
 
 def about(request):
     return render(request, 'pages/about.html')
+
+def open(request):
+    return render(request, 'pages/open.html')

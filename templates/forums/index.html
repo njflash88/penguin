@@ -9,7 +9,7 @@
 <form action="{% url 'forums:index' %}" method="post">
   {% csrf_token %}
   <div>
-      <label for="postmsg">Post Content:</label><br>
+      <label for="postmsg"></label><br>
 <textarea id="postmsg" name="postmsg" placeholder="{{user.username}}, what is Happening ..."></textarea>
 
     <script>
@@ -28,6 +28,19 @@
 <div>
     <button type="submit">Post</button><i class="fa fa-file-image-o"></i>
 </div>
+
+<!-- add a button-->
+<div class="button">
+  <form action="{% url 'forums:index' %}" method="POST">
+      {% csrf_token %}
+      <input
+          type="submit"
+          value="Photo"
+          class="btn btn-primary"
+      />
+  </form>
+</div>
+
 </form>
     <hr>
 

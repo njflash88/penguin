@@ -30,7 +30,6 @@ def enroll(request, course_id):
 
     print("***course=", course_id, "   user_id=", user_id, request.user.username)
     if request.method == 'POST':
-        #check user authenticated or not
         enrollment=Enrollment.objects.create(
         student = request.user.username,
         course=course.title

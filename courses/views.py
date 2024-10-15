@@ -20,5 +20,8 @@ def index(request):
 def listing(request, course_id):
     #course = Course.objects.get(id=course_id)
     course = get_object_or_404(Course, pk=course_id)
-    return render(request, 'courses/listing.html', {'course':course})
+    # check if user already registered
+    enrolled = Enrollment.objects. filter(student=request.user.username, course=course.title).exists()
+    print("*** in listing: enrolled=" , enrolled)
+    return render(request, 'courses/listing.html', {'course':course, 'enrolled':enrolled})
 

@@ -1,0 +1,55 @@
+{% extends 'base.html' %} 
+{% load humanize %}
+<!--add title to the tab-->
+{% block title %} | Open Source {% endblock %}
+{% block content %}
+
+<p>Endorse the definition
+We’re driving a multi-stakeholder process to define an “Open Source AI” and you can endorse the definition.
+Read the latest draft
+Why Artificial Intelligence needs to be Open Source?
+Open Source software (OSS) succeeds because anyone can learn, use, share, and improve it. This transparency and collaboration lead to innovation and economic benefits. AI needs similar freedom to flourish. A 2022 European Commission report estimated that Open Source contributed between €65 and €95 billion to the European economy (Blind et al. 2021).
+</p>
+<p>A 2023 working paper by Harvard Business School (Hoffman et al, 2024) estimates the supply-side value of widely-used OSS is $4.15 billion, and the demand-side value at $8.8 trillion. OSS generates enormous value because it is underpinned by a stable and well-defined set of licenses that are widely understood and adopted. These licenses have been developed and evaluated against the Open Source Definition (OSD), a 26-year-old, stable, agreed definition of what constitutes OSS.
+
+    The license evaluation process is a transparent and open community process, and details of approved licenses are published openly. These licenses make it easy to collaborate on, share, and reuse code because they provide clarity regarding “intellectual property” and usage rights.
+</p>
+    <p>
+        Why do we need a new Definition of Open Source just for AI?
+        AI systems are growing more complex and pervasive every day. The traditional view of Open Source code and licenses when applied to AI components are not sufficient to guarantee the freedoms to use, study, share and modify the systems. It is time to address the question: What does it mean for an AI system to be Open Source?
+    </p>
+
+
+<p>
+How will we define Open Source AI?
+The Open Source Definition is a practical guide to judge if legal documents grant the four freedoms to software, following the principles of the GNU Manifesto. More than two decades passed between the GNU Manifesto and the writing of the Open Source Definition. For AI we cannot wait decades to produce a new document. The Open Source Initiative started coordinating in 2022 a global process to sharpen collective knowledge and identify the principles that lead to a widely adopted Open Source AI Definition (OSAID).
+
+OSI is bringing together global experts to establish a shared set of principles that can recreate permissionless, pragmatic and simplified collaboration for AI practitioners, similar to that which the Open Source Definition has done for the software ecosystem.  The output of this work will be a published definition document on the website of the Open Source Initiative.
+
+The document will be used to validate whether an AI system is an Open Source AI, or not. The validation process will be similar to the evaluation of existing licenses for software: community-led, open and public.
+</p>
+
+<p>
+The Process
+The board requires that the staff and the AI committee propose by the in-person meeting of 2024 in Raleigh, an Open Source AI Definition that is supported by stakeholders that include deployers of AI, end users of AI and subjects (those affected by AI decisions), provides positive examples of AI systems, is rooted in current practice and provides a reference for interested parties.
+
+Collaboration with multiple stakeholders
+The Open Source Initiative (OSI) has guarded the Open Source Definition for 26 years and has robust processes for developing, amending, and consulting on licenses. This authority position is recognised by a number of leaders in organizations who have agreed to co-design a new definition suited for AI and ML.
+
+These leaders joined the co-design process in a personal capacity and with various degrees of direct involvement from their employers like Digital Public Goods Alliance, Mozilla Foundation, Open Knowledge Foundation, National Endowment for Democracy, Center for Tech and Civic Life, Code for America, Wikimedia Foundation, Creative Commons, Linux Foundation, MLCommons, EleutherAI, Open Future, GitHub, Microsoft, Google, DataStax, Amazon, Meta, Hugging Face, GIZ FAIR Forward – AI for All, OpenLLM France, Polytechnic Institute of Paris, Intel, Apache Software Foundation, Samsung, and the United Nations International Telecommunications Union (ITU).
+</p>
+<p>
+Co-design process
+Co-design, also called participatory or human-centered design, is a set of creative methods used to solve communal problems by sharing knowledge and power. The co-design methodology addresses the challenges of reaching an agreed definition within a diverse community (Costanza-Chock, 2020: Escobar, 2018: Creative Reaction Lab, 2018: Friedman et al., 2019). As noted in MIT Technology Review’s article about this project, “[t]he open-source community is a big tent… encompassing everything from hacktivists to Fortune 500 companies…. With so many competing interests to consider, finding a solution that satisfies everyone while ensuring that the biggest companies play along is no easy task.” (Gent, 2024). The co-design method allows us to integrate these diverging perspectives into one just, cohesive, and feasible standard. Support from such a significant and broad group of people also creates a tension to be managed between moving swiftly enough to deliver outputs that can be used operationally, and taking the time to consult widely to understand the big issues and garner community buy-in. 
+
+The first step of the co-design process was to identify the freedoms needed for Open Source AI. After various online and in-person activities and discussions, including five workshops across the world, the community adopted the four freedoms for software, now adapted for AI systems.
+
+The next step was to form four working groups to initially analyze four AI systems. To achieve better representation, special attention was given to diversity, equity and inclusion. Over 50% of the working group participants are people of color, 30% are black, 75% were born outside the US and 25% are women, trans and nonbinary.
+
+These working groups discussed and voted on which AI system components should be required to satisfy the four freedoms for AI. The components we adopted are described in the Model Openness Framework developed by the Linux Foundation.
+
+The vote compilation was performed based on the mean total votes per component (μ). Components which received over 2μ votes were marked as required and between 1.5μ and 2μ were marked likely required. Components that received between 0.5μ and μ were marked likely not required and less than 0.5μ as not required.
+
+The working groups evaluated legal frameworks and legal documents for each component. Finally, each working group published a recommendation report. The end result is the OSAID with a comprehensive definition checklist encompassing a total of 17 components. More working groups are being formed to evaluate how well other AI systems align with the definition.
+</p>
+{% endblock %}
